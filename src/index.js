@@ -7,6 +7,7 @@ app.use('/uploads',express.static('uploads'));
 const dotenv =require("dotenv")
 dotenv.config({path:'./config.env'});
 require('../db/conn')
+const port = process.env.PORT||3000;
 app.use(express.json());
 
 app.use(require('../router/auth'))
@@ -30,6 +31,6 @@ app.get("/signup",(req,res)=>{
 })
 
 
-app.listen(7000,()=>{
+app.listen(port,()=>{
     console.log(`App is running on 7000 `);
 })
