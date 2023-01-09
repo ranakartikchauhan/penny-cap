@@ -13,7 +13,11 @@
   },
   "devDependencies": {},
   "scripts": {
+<<<<<<< HEAD
     "start": "node src/index.js",
+=======
+    "start": "node index.js",
+>>>>>>> f337f84 (resolve routes)
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
