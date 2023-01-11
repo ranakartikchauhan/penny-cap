@@ -413,7 +413,7 @@ router.post('/signin', async (req, res) => {
                 httpOnly: true
             });
             if (!isMatch) {
-                res.status(400).json({ error: "USer error 2" })
+                res.status(400).json({ error: "USer error " })
             }
             else {
                 res.json({ message: "user sign in succesfully" })
@@ -440,7 +440,7 @@ router.get("/portfolio", aunthenticate, (req, res) => {
 
 router.post('/buyed', aunthenticate, async (req, res) => {
 
-    console.log("im caledi gdgdg")
+   
     try {
         const { stockname, price, quantity, totalprice } = req.body;
 
@@ -521,44 +521,19 @@ router.get("/portfolio", aunthenticate, async (req, res) => {
 //
 router.get("/investstock", aunthenticate, async (req, res) => {
     res.send(req.rootUser);
+    res.status(200)
     // Data = await Account.findOne({});
 })
 
 
-//webScraping
-async function scrapeProduct(url){
-    try{
-        const browser = await puppeteer.launch();
-    const page = await browser.newPage()
-    page.goto("https://www1.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuote.jsp?symbol=IDEA");
-    
-        // const f = await page.$("[class='lastPrice']")
-        // const text = await(await f.getProperty('textContent')).jsonValue()
-        // console.log(text)
-      const data= await page.evaluate(function(){
-        const r=document.querySelectorAll('stock');
-        const array =[];
-        for(i=0;i<r.length;i++){
-                array.push({
-                    price:r[i].querySelectorAll('.lastPrice').innerText
-                })
-        }
-        return array
-     
-       })
-    console.log(data)
 
-    }
- catch(err){
-    console.log(err)
- }   
-   
-}
 
-router.get("/getnse",async(req,res)=>{
-    res.send("heloo form ")
-    scrapeProduct("https://www1.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuote.jsp?symbol=IDEA")
+
+router.get("/logout",async(req,res)=>{
+    res.clearCookie('jwtoken');
+
+    res.status(200).send("USER Logout")
+    console.log("Log OUT")
 })
-
 
 module.exports = router;

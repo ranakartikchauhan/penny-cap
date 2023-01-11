@@ -4,7 +4,7 @@ const User = require('../model/account');
 
 const Aunthenticate = async (req,res,next)=>{
    try{
-    console.log("autn is called");
+    
     const token = req.cookies.jwtoken;
    
     const verifyToken = jwt.verify(token,process.env.SECRET_KEY);
