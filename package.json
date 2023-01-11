@@ -13,7 +13,10 @@
   },
   "devDependencies": {},
   "scripts": {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 101b4686f8e0f7bc046214239dd31dae52369260
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
